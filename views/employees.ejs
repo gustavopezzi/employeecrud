@@ -1,0 +1,39 @@
+<%- include layouts/header.ejs %>
+<div class="page-data">
+    <div class="data-btn">
+        <button onClick="addUser();">Add Employee</button>
+    </div>
+    <div class="data-table">
+        <table border="2" cellpadding="7" cellspacing="7">
+            <tr>
+                <th width="50px">No</th>
+                <th>Name</th>
+                <th>Address</th>
+                <th>Phone</th>
+                <th>Email</th>
+                <th width="120px">Action</th>
+            </tr>
+
+            <% if (employeeList.length > 0) { %>
+                <% for (var i = 0; i < employeeList.length; i++) { %>
+                    <tr>
+                        <td><%= (i+1) %></td>
+                        <td><%= employeeList[i].name %></td>
+                        <td><%= employeeList[i].address %></td>
+                        <td><%= employeeList[i].phone %></td>
+                        <td><%= employeeList[i].email %></td>
+                        <td>
+                            <a class="a-inside edit" href="../employees/edit/<%=employeeList[i].id%>">Edit</a>
+                            <a class="a-inside delete" href="../employees/delete/<%=employeeList[i].id%>">Del</a>
+                        </td>
+                    </tr>
+                <% } %>
+            <% } else { %>
+                 <tr>
+                    <td colspan="3">No employees</td>
+                 </tr>
+             <% } %>
+        </table>
+     </div>
+ </div>
+<%- include layouts/footer.ejs %>
